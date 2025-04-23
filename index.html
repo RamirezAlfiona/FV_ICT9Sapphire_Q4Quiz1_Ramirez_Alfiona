@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BMI Calculator</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #f3e8ff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border: 2px solid #d1b3ff;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      margin: 30px auto;
+      flex: 1;
+    }
+
+    h1 {
+      color: #8000ff;
+    }
+
+    p {
+      color: #4b0082;
+    }
+
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #d1b3ff;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #c084fc;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #a855f7;
+    }
+
+    #result {
+      margin-top: 15px;
+      color: #6a0dad;
+      font-weight: bold;
+    }
+
+    img {
+      width: 100px;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      background-color: #db99ff;
+      color: #7a4b57;
+      padding: 10px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #7a4b57;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="https://cdn-icons-png.flaticon.com/512/12130/12130857.png" alt="BMI Icon">
+    <h1>BMI Calculator</h1>
+    <p>BMI helps check if your weight is healthy for your height.</p>
+
+    <input type="number" id="weight" placeholder="Weight in kg"><br>
+    <input type="number" id="height" placeholder="Height in meters"><br>
+
+    <button onclick="calculateBMI()">Calculate BMI</button>
+
+    <div id="result"></div>
+  </div>
+
+  <footer>
+    <p><a href="https://docs.google.com/document/d/1IbhCTqv4hrXM07od8iwl5vMwbXo_5n0vBoaUZ6L1ky0/edit?usp=sharing" target="_blank">References</a></p>
+  </footer>
+
+  <script>
+    function calculateBMI() {
+      var weight = parseFloat(document.getElementById("weight").value);
+      var height = parseFloat(document.getElementById("height").value);
+
+      var bmi = weight / (height * height);
+      var category = "";
+
+      if (bmi < 18.5) {
+        category = "Underweight";
+      } else if (bmi >= 18.5 && bmi <= 24.9) {
+        category = "Normal weight";
+      } else if (bmi >= 25 && bmi <= 29.9) {
+        category = "Overweight";
+      } else if (bmi >= 30) {
+        category = "Obese";
+      }
+
+      document.getElementById("result").innerHTML = "Your BMI is " + bmi.toFixed(2) + " (" + category + ")";
+    }
+  </script>
+
+</body>
+</html>
